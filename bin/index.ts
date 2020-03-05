@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import * as cdk from '@aws-cdk/core';
-import { TestStack } from '../lib/test-stack';
+import S3Bucket from '../lib/s3-bucket';
 
 const app = new cdk.App();
-new TestStack(app, 'TestStack');
+new S3Bucket(app, 'StackS3Bucket');
