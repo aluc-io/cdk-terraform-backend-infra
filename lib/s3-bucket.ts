@@ -1,6 +1,6 @@
 import { App, Stack, StackProps, RemovalPolicy } from '@aws-cdk/core'
 import { Bucket, BucketEncryption } from '@aws-cdk/aws-s3'
-import { PolicyStatement, PolicyStatementProps } from '@aws-cdk/aws-iam'
+import { PolicyStatement, PolicyStatementProps, Effect } from '@aws-cdk/aws-iam'
 
 export default class S3Bucket extends Stack {
   constructor(app: App, id: string, props?: StackProps) {
@@ -12,8 +12,8 @@ export default class S3Bucket extends Stack {
     const bucket = new Bucket(this, bucketName, {
       encryption: BucketEncryption.KMS_MANAGED,
       bucketName: bucketName,
-      removalPolicy: RemovalPolicy.DESTROY,
+      removalPolicy: RemovalPolicy.RETAIN,
+      versioned: true,
     })
-    bucket
   }
 }
