@@ -8,7 +8,7 @@ export default class DynamoDB extends Stack {
     const tableName = process.env.TSB_DYNAMODB_TABLE_NAME
     if (!tableName) throw new Error('TSB_DYNAMODB_TABLE_NAME is required')
 
-    const table = new Table(this, 'aluc-io-v3-terraform', {
+    const table = new Table(this, tableName, {
       tableName: tableName,
       partitionKey: { name: 'LockID', type: AttributeType.STRING },
       removalPolicy: RemovalPolicy.RETAIN,
